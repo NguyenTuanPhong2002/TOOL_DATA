@@ -5,8 +5,12 @@ import math
 import random
 from datetime import datetime
 
+a = 2
+
 # Initialize Firebase Admin SDK
-cred = credentials.Certificate('C:/Users/luuma/PycharmProjects/pythonProject1/Capacitor.json')
+#cred = credentials.Certificate('C:/Users/luuma/PycharmProjects/pythonProject1/Capacitor.json')
+
+cred = credentials.Certificate('/home/linux/TOOL_DATA/Capacitor.json')
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://capacitor-129e8-default-rtdb.firebaseio.com/'
 })
@@ -83,7 +87,7 @@ print(three_phase_current)
 # Prepare data to update in Firebase Realtime Database
 data = {
     'test': {
-        '1': {
+        a: {
             'ActivePower': active_power,
             'CosFi': cos_fi,
             'ReactivePower': reactive_power,
@@ -103,6 +107,7 @@ data = {
     }
 }
 
+a = a + 1
 # Write data to Firebase Realtime Database
 ref = db.reference()
 ref.update(data)
